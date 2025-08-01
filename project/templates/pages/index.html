@@ -13,32 +13,99 @@
 
 
 {% block content %}
-<a href="{{ url_for('pages.regenerate') }}" style="border:1px solid red; color: red; padding: 1px 5px;">regenerate</a>
-<br>msg: {{ msg }}
 
 <div class="testing2">
     {% for row in board %}
         {% for col in row %}
+
+            {# Row zigzag offset #}
             {% set offset_row = 'offset' %}
             {% if col['row'] is even %}
                 {% set offset_row = '' %}
             {% endif %}
 
+            {# Row wrapper #}
             {% if col['col'] == 0 %}
                 <div class="wrap {{ offset_row }}">
             {% endif %}
-            {# {{ col['row'] }} {{ col['col'] }} #}
+
+            {# Tile clickability #}
+            {# Set default to FALSE #}
+            {% set clickable = false %}
+
+            {# TRUE if not the FIRST or the LAST row #}
+            {% if ((col['row'] > 0) and (col['row'] < (rows - 1))) %}
+                {% set clickable = true %}
+            {% endif %}
+
+            {# FALSE if EVEN row number and FIRST column #}
+            {% if col['row'] is even and (col['col'] == 0) %}
+                {% set clickable = false %}
+            {% endif %}
+
+            {# FALSE if ODD row number and LAST column #}
+            {% if col['row'] is odd and (col['col'] == (cols - 1)) %}
+                {% set clickable = false %}
+            {% endif %}
+
+
+            {# Edge identifiers #}
+            {% set top = false %}
+            {% set bottom = false %}
+            {% set left = false %}
+            {% set right = false %}
+            {% if col['row'] == 0 %}
+                {% set top = true %}
+            {% endif %}
+            {% if col['row'] == (rows - 1) %}
+                {% set bottom = true %}
+            {% endif %}
+            {% if col['col'] == 0 %}
+                {% set left = true %}
+            {% endif %}
+            {% if col['col'] == (cols - 1) %}
+                {% set right = true %}
+            {% endif %}
+
+
             <el-dropdown class="">
 
-                <button class="{{ col['tile'] }}">
+                {% if clickable %}
+                    {% set tile_material = col['tile'] %}
+                {% else %}
+                    {% set tile_material = 'edge-' %}
+                    {% if top %}
+                        {% set tile_material = tile_material~'t' %}
+                    {% endif %}
+                    {% if bottom %}
+                        {% set tile_material = tile_material~'b' %}
+                    {% endif %}
+                    {% if left %}
+                        {% set tile_material = tile_material~'l' %}
+                    {% endif %}
+                    {% if right %}
+                        {% set tile_material = tile_material~'r' %}
+                    {% endif %}
+                {% endif %}
+
+                <button class="{{ tile_material }}">
                     &nbsp;
-                    {# {{ col['row'] }} {{ col['col'] }} #}
+                    {# {{top}} #}
+                    {# {{ col['row'] }} #}
+                    {# {{ col['col'] }} #}
                 </button>
 
+
+                {% if clickable %}
                 <el-menu anchor="bottom end" popover class="origin-top-right rounded-md bg-primary transition transition-discrete data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
                     <div class="material-choice">
                         <a href="{{ url_for('pages.terraform', row=col['row'], col=col['col'], material='grass') }}">
                             Grass
+                        </a>
+                    </div>
+                    <div class="material-choice">
+                        <a href="{{ url_for('pages.terraform', row=col['row'], col=col['col'], material='forest') }}">
+                            Forest
                         </a>
                     </div>
                     <div class="material-choice">
@@ -57,6 +124,7 @@
                         </a>
                     </div>
                 </el-menu>
+                {% endif %}
             </el-dropdown>
             {% if col['col'] == cols - 1 %}
                 </div>
@@ -67,4 +135,6 @@
     {% endfor %}
 </div>
 
+<a href="{{ url_for('pages.regenerate') }}" style="border:1px solid red; color: red; padding: 1px 5px;">regenerate</a>
+<br>msg: {{ msg }}
 {% endblock %}
