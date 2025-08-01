@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="next-size-adjust" />
+    {% block meta_title -%}<title>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</title>{%- endblock %}
+    {% block meta_robots -%}
+    <meta name="robots" content="index, follow" />{%- endblock %}
+    {% block meta_seo -%}{%- endblock %}
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    {% assets "css_all" -%}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {%- endassets %}
+    {%- block styling -%}{%- endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+
+<style>
+.board {
+    width: calc({{cols}} * 59px);
+}
+</style>
+</head>
+
+<body class="">
+    {% block sticky %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

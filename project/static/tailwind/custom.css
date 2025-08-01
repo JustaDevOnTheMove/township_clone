@@ -1,0 +1,313 @@
+/**
+ * Custom CSS Styles
+ *
+ * Copyright 2025 JustADevOnTheMove
+ */
+
+ :root {
+    --color-base: #06360e;
+    --color-grass: #06560e;
+    --color-sand: #b19a13;
+    --color-mountain: #4f2a00;
+    --color-water: #006e95;
+
+    --tile-width: 58px;
+    --tile-height: 38px;
+
+    --row-margin-top: -19px;
+    --row-offset: 29.45px;
+
+    --button-width: 27px !important;
+}
+
+/* ********************************* */
+/*                                   */
+/*         TEMPLATE DEFAULTS         */
+/*                                   */
+/* ********************************* */
+
+body {
+    background-color: var(--color-base);
+}
+
+/* ********************************* */
+/*                                   */
+/*       TEMPLATE COLORS             */
+/*                                   */
+/* ********************************* */
+
+.testing2 {
+    margin-top: 35px;
+}
+
+.testing2 button {
+    background-color: #0099ff55;
+    transform: scaleY(0.6) rotate(-45deg);
+    cursor:pointer;
+    width: 60px;
+    height: 60px;
+    margin-left:20px;
+}
+.testing2 button.grass {
+    background-color: var(--color-grass);
+}
+.testing2 button.sand {
+    background-color: var(--color-sand);
+}
+.testing2 button.mountain {
+    background-color: var(--color-mountain);
+}
+.testing2 button.water {
+    background-color: var(--color-water);
+}
+.testing2 button:hover {
+    background-color: #ff666666;
+}
+
+
+.testing2 .test:hover {
+    background-color: #ff00ff55;
+}
+.testing2 .wrap {
+    margin:-35px 0 0 0;
+}
+.testing2 .offset {
+    margin:-35px 0 0 42px;
+}
+
+
+
+.testing1 {
+    margin-top: 35px;
+}
+
+.testing1 .test {
+    background-color: #0099ff55;
+    transform: scaleY(0.6) rotate(-45deg);
+    cursor:pointer;
+    width: 60px;
+    height: 60px;
+    margin-left:20px;
+}
+.testing1 .test:hover {
+    background-color: #ff00ff55;
+}
+.testing1 .wrap {
+    margin:-35px 0 0 0;
+}
+.testing1 .offset {
+    margin:-35px 0 0 42px;
+}
+
+
+
+
+
+
+
+
+.board {
+    /* width: 239px; */
+    /* width: calc(6 * var(--tile-width)); */
+}
+.board .tile-foundation {
+    position: relative;
+    width: var(--tile-width);
+    height: var(--tile-height);
+    margin-top: var(--row-margin-top);
+}
+.board .tile {
+    position: absolute;
+    top:0;
+    left:0;
+    /* outline: 0px solid red; */
+    /* margin-top: var(--row-margin-top); */
+    line-height:0;
+    font-size:0;
+    margin:0;
+    padding:0;
+
+    border-radius: 50%;
+    display: inline-block;
+    overflow:hidden;
+    border:1px solid #ff0000ff;
+}
+.board .tile el-menu {
+    font-size: 1rem;
+    line-height:1.5rem;
+    margin:0;
+    padding:0;
+}
+.board .tile-foundation.offset_row {
+    margin-left: var(--row-offset);
+}
+.board .tile-foundation.first_row {
+    margin-top: 0px;
+}
+/* .grass {
+    background-image: url('/static/images/grass3.png');
+}
+.sand {
+    background-image: url('/static/images/sand3.png');
+}
+.water {
+    background-image: url('/static/images/water3.png');
+} */
+
+/* el-dropdown {
+    display: block;
+    width: 27px !important;
+    height: 27px !important;
+    margin: 5px 0 0 10px;
+    transform: rotate(-45deg);
+    background-color: #0000ff55;
+} */
+.board button {
+    display: block;
+    /* width: 27px !important;
+    height: 27px !important; */
+    margin: 0 0 0 0;
+    background-color: #ff000055;
+    border-radius: 50%;
+}
+
+.board .bg-red {
+    /* background-color: #ff000055; */
+}
+
+.board button:hover {
+    cursor:pointer;
+}
+.board .clk {
+    fill-opacity:1;stroke:none;stroke-width:0;
+}
+.board .clk.grass {
+    fill:#06560e;
+}
+.board .clk.sand {
+    fill:#bca003;
+}
+.board .clk.water {
+    fill:#02507e;
+}
+.board .clk:hover {
+    /* fill:#8b1c00; */
+}
+.board button .clk {
+    /* transition: fill 10s ease-in-out; */
+}
+.board button:hover .clk {
+    fill:#8b1c00;
+    /* transition: fill 0s ease-in-out; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Primary color - light */
+/* .text-primary-light {
+    color: var(--color-sand-350);
+} */
+
+/* .bg-primary-light {
+    background-color: var(--color-sand-350);
+} */
+
+/* .hover\:bg-primary-light {
+    &:hover {
+        @media (hover: hover) {
+            background-color: var(--color-sand-350);
+        }
+    }
+} */
+
+/* .hover\:text-primary-light {
+    &:hover {
+        @media (hover: hover) {
+            color: var(--color-sand-350);
+        }
+    }
+} */
+
+/* Primary color - medium */
+/* .text-primary-medium {
+    color: var(--color-sand-450);
+} */
+
+/* .bg-primary-medium {
+    background-color: var(--color-sand-450);
+} */
+
+/* .hover\:bg-primary-medium {
+    &:hover {
+        @media (hover: hover) {
+            background-color: var(--color-sand-450);
+        }
+    }
+} */
+
+/* .hover\:text-primary-medium {
+    &:hover {
+        @media (hover: hover) {
+            color: var(--color-sand-450);
+        }
+    }
+} */
+
+/* Primary color - dark */
+/* .text-primary-dark {
+    color: var(--color-sand-700);
+} */
+
+/* .bg-primary-dark {
+    background-color: var(--color-sand-700);
+} */
+
+/* .hover\:bg-primary-dark {
+    &:hover {
+        @media (hover: hover) {
+            background-color: var(--color-sand-700);
+        }
+    }
+} */
+
+/* .hover\:text-primary-dark {
+    &:hover {
+        @media (hover: hover) {
+            color: var(--color-sand-700);
+        }
+    }
+} */
+
+/* .shadow-sand-1000\/12 {
+    --tw-shadow-color: color-mix(in oklab, var(--color-sand-1000) 12%, transparent);
+} */

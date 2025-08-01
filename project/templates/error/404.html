@@ -1,0 +1,22 @@
+{% extends "_base/base.html" %}
+
+{% block meta_title -%}
+<title>404 - Page non trouvé</title>
+{%- endblock %}
+
+{% block meta_robots -%}
+<meta name="robots" content="noindex, follow" />
+{%- endblock %}
+
+{% block content %}
+<div class="py-24 sm:py-32">
+    <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+        <p class="mx-auto mt-2 text-center text-4xl font-semibold tracking-tight text-balance text-sand-800 sm:text-5xl">
+            Page not found - Error 404
+        </p>
+        <p class="mx-auto mt-2 max-w-lg text-center text-xl font-semibold tracking-tight text-balance text-sand-600 sm:text-2xl">
+            Sorry, the page that you're looking for has not been found
+        </p>
+    </div>
+</div>
+{% endblock %}

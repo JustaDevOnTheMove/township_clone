@@ -1,0 +1,15 @@
+blinker==1.9.0
+click==8.1.8
+cssmin==0.2.0
+Flask==3.1.0
+Flask-Assets==2.1.0
+Flask-HTMLmin==3.0.0
+Frozen-Flask==1.0.2
+htmlmin2==0.1.13
+itsdangerous==2.2.0
+Jinja2==3.1.6
+jsmin==3.0.1
+MarkupSafe==3.0.2
+python-dotenv==1.0.1
+webassets==2.0
+Werkzeug==3.1.3

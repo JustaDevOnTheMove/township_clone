@@ -1,0 +1,70 @@
+{% extends "_base/base.html" %}
+
+
+{% block meta_title -%}
+<title>Township Clone</title>
+{%- endblock %}
+
+
+{% block meta_seo -%}{%- endblock %}
+
+
+{% block styling %}{%- endblock %}
+
+
+{% block content %}
+<a href="{{ url_for('pages.regenerate') }}" style="border:1px solid red; color: red; padding: 1px 5px;">regenerate</a>
+<br>msg: {{ msg }}
+
+<div class="testing2">
+    {% for row in board %}
+        {% for col in row %}
+            {% set offset_row = 'offset' %}
+            {% if col['row'] is even %}
+                {% set offset_row = '' %}
+            {% endif %}
+
+            {% if col['col'] == 0 %}
+                <div class="wrap {{ offset_row }}">
+            {% endif %}
+            {# {{ col['row'] }} {{ col['col'] }} #}
+            <el-dropdown class="">
+
+                <button class="{{ col['tile'] }}">
+                    &nbsp;
+                    {# {{ col['row'] }} {{ col['col'] }} #}
+                </button>
+
+                <el-menu anchor="bottom end" popover class="origin-top-right rounded-md bg-primary transition transition-discrete data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
+                    <div class="material-choice">
+                        <a href="{{ url_for('pages.terraform', row=col['row'], col=col['col'], material='grass') }}">
+                            Grass
+                        </a>
+                    </div>
+                    <div class="material-choice">
+                        <a href="{{ url_for('pages.terraform', row=col['row'], col=col['col'], material='sand') }}">
+                            Sand
+                        </a>
+                    </div>
+                    <div class="material-choice">
+                        <a href="{{ url_for('pages.terraform', row=col['row'], col=col['col'], material='mountain') }}">
+                            Mountain
+                        </a>
+                    </div>
+                    <div class="material-choice">
+                        <a href="{{ url_for('pages.terraform', row=col['row'], col=col['col'], material='water') }}">
+                            Water
+                        </a>
+                    </div>
+                </el-menu>
+            </el-dropdown>
+            {% if col['col'] == cols - 1 %}
+                </div>
+            {% endif %}
+        {% endfor %}
+
+
+    {% endfor %}
+</div>
+
+{% endblock %}
