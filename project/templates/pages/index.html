@@ -70,8 +70,10 @@
 
             <el-dropdown class="">
 
+                {% set clickable_class = '' %}
                 {% if clickable %}
                     {% set tile_material = col['tile'] %}
+                    {% set clickable_class = 'clickable' %}
                 {% else %}
                     {% set tile_material = 'edge-' %}
                     {% if top %}
@@ -88,7 +90,7 @@
                     {% endif %}
                 {% endif %}
 
-                <button class="{{ tile_material }}">
+                <button class="{{ tile_material }} {{ clickable_class }}">
                     &nbsp;
                     {# {{top}} #}
                     {# {{ col['row'] }} #}
